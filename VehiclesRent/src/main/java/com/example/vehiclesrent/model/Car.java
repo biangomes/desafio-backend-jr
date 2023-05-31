@@ -1,7 +1,11 @@
 package com.example.vehiclesrent.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -10,7 +14,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(updatable=false, unique=true, nullable=false)
+    @Column(updatable = false, unique = true, nullable = false)
     private UUID uuid;
     @Column
     private String brand;
@@ -19,15 +23,23 @@ public class Car {
     @Column
     private LocalDateTime createdAt;
 
-    public Car() {}
+    public Car() {
+    }
 
-    public Car(UUID uuid, String brand, String model, LocalDateTime createdAt) {
+    /* TODO Aqui está sendo passado para o construtor 1 parâmetro que não está sendo utilizado e nem deveria.
+       Na minha interpretação, o valor do createdAt deveria ser gerado no momento em que o objeto estiver sendo salvo para
+       corresponder ao horário exato da operação.
+       Sugiro remoção do parâmetro created_at da assinatura e implementação do construtor.
+
+       Também tem getters/setters que não estão sendo utilizados. Recomendo criá-los sob demanda e apenas se for necessário.
+       É importante para não quebrar o encapsulamento expondo atributos que não deveriam expostos sem que haja uma necessidade.
+    */
+    public Car(UUID uuid, String brand, String model /* LocalDateTime createdAt */) {
         this.uuid = uuid;
         this.brand = brand;
         this.model = model;
-        this.createdAt = createdAt;
+        //this.createdAt = createdAt;
     }
-
 
     public UUID getUuid() {
         return uuid;

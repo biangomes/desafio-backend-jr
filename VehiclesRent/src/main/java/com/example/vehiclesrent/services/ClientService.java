@@ -8,49 +8,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vehiclesrent.model.Client;
 import com.example.vehiclesrent.repository.ClientRepository;
+import org.springframework.stereotype.Service;
 
+// TODO A classe service deve ser anotada com @Service para o Spring gerenciar e conseguir injetar ela em outras classes.
+@Service
 public class ClientService implements ICrudService<Client>{
-    
-    private final ClientRepository repo;
+
+    // TODO Recomendo nomear a variável como clientRepository por uma questão de semântica.
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public ClientService(ClientRepository repo) {
-        this.repo = repo;
+    public ClientService(ClientRepository clientRepository) {
+        this.clientRepository = clientRepository;
     }
 
     @Override
     public void delete(UUID uuid) {
-        Optional<Client> record = repo.findById(uuid);
+        Optional<Client> record = clientRepository.findById(uuid);
 
-        if (record.isPresent()) {
-            repo.delete(record.get());
-        }
-        
-        // TODO handle exception
-        record.orElse(null);
+        // TODO A classe Optinal oferece o método ifPresent que recebe um Consumer como parâmetro,
+        //  então tu pode chamar direto o método delete do clientRepository.
+        record.ifPresent(clientRepository::delete);
     }
 
     @Override
     public List<Client> getAll() {
-        List<Client> records = repo.findAll();
-        return records;
+        // TODO Como não tem lógica no getAll, pode retornar direto o resultado do findAll.
+        return clientRepository.findAll();
     }
 
     @Override
-    public Client getById(UUID uuid) {
-        Optional<Client> record = repo.findById(uuid);
-
-        if (record.isPresent()) {
-            return record.get();
-        }
-
-        // TODO handle exception
-        return record.orElse(null);
+    public Optional<Client> getById(UUID uuid) {
+        return clientRepository.findById(uuid);
     }
 
     @Override
     public Client save(Client object) {
-        return repo.save(object);
+        return clientRepository.save(object);
     }
 
     

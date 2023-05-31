@@ -23,6 +23,8 @@ import com.example.vehiclesrent.model.Car;
 import com.example.vehiclesrent.model.Client;
 import com.example.vehiclesrent.repository.ClientRepository;
 
+// TODO Essa classe eu não revisei, centralizei o review na CarServiceTest.
+
 @ExtendWith(MockitoExtension.class)
 public class ClientServiceTest {
     
@@ -35,7 +37,7 @@ public class ClientServiceTest {
 
     private final List<Client> clients = new ArrayList<>();
 
-    Car car = new Car(UUID.randomUUID(), "Aston Martin", "GPX", LocalDateTime.now());
+    Car car = new Car(UUID.randomUUID(), "Aston Martin", "GPX");
 
     @DisplayName("Must return one car by ID")
     @Test
@@ -52,7 +54,8 @@ public class ClientServiceTest {
         assertNotNull(savedClient);
         assertEquals(savedClient.getUuid(), client1.getUuid());
         assertEquals(savedClient.getCpf(), client1.getCpf());
-        assertEquals(savedClient.getName(), savedClient.getName());
+        // TODO Aqui tu tava comparando o objeto com ele mesmo
+        assertEquals(savedClient.getName(), client1.getName());
 
     }
 
@@ -60,8 +63,9 @@ public class ClientServiceTest {
     @DisplayName("Must return a list of cars")
     @Test
     public void must_return_a_list_of_cars() {
+        // TODO Aqui tu pode aplicar a mesma lógica que eu sugeri na CarServiceTest.
         Client c1 = new Client(UUID.randomUUID(), "Henry", "100.200.300-40", car, LocalDate.of(1997, Month.OCTOBER, 20), LocalDateTime.now(), LocalDateTime.now());
-        Client c2 = new Client(UUID.randomUUID(), "Ada", "900.900.900-92", car, LocalDate.of(1990, Month.JANUARY, 01), LocalDateTime.now(), LocalDateTime.now());
+        Client c2 = new Client(UUID.randomUUID(), "Ada", "900.900.900-92", car, LocalDate.of(1990, Month.JANUARY, 1), LocalDateTime.now(), LocalDateTime.now());
         clients.add(c1);
         clients.add(c2);
 

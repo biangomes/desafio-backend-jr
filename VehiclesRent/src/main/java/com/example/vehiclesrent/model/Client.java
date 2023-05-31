@@ -36,6 +36,14 @@ public class Client {
     public Client() {
     }
 
+    /* TODO Aqui estão sendo passados 2 parâmetros para o construtor, mas eles não estão sendo utilizados.
+       Na minha interpretação, esses valores deveriam ser gerados no momento em que o objeto estiver sendo salvo para
+       corresponder ao horário exato da operação.
+       Sugiro remoção dos parâmetros created_at e updated_at da assinatura e implementação do construtor.
+
+       Também tem getters/setters que não estão sendo utilizados. Recomendo criá-los sob demanda e apenas se for necessário.
+       É importante para não quebrar o encapsulamento expondo atributos que não deveriam expostos sem que haja uma necessidade.
+    */
     public Client(UUID uuid, String name, String cpf, Car cars, LocalDate birth, LocalDateTime created_at,
             LocalDateTime updated_at) {
         this.uuid = uuid;
@@ -51,6 +59,7 @@ public class Client {
         return uuid;
     }
 
+    // TODO Daqui pra baixo tem muitos getters/setters que não estão sendo utilizados.
     public void setUuid(UUID uuid) {
         this.uuid = uuid;
     }
