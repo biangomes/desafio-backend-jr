@@ -26,19 +26,10 @@ public class Car {
     public Car() {
     }
 
-    /* TODO Aqui está sendo passado para o construtor 1 parâmetro que não está sendo utilizado e nem deveria.
-       Na minha interpretação, o valor do createdAt deveria ser gerado no momento em que o objeto estiver sendo salvo para
-       corresponder ao horário exato da operação.
-       Sugiro remoção do parâmetro created_at da assinatura e implementação do construtor.
-
-       Também tem getters/setters que não estão sendo utilizados. Recomendo criá-los sob demanda e apenas se for necessário.
-       É importante para não quebrar o encapsulamento expondo atributos que não deveriam expostos sem que haja uma necessidade.
-    */
-    public Car(UUID uuid, String brand, String model /* LocalDateTime createdAt */) {
+    public Car(UUID uuid, String brand, String model) {
         this.uuid = uuid;
         this.brand = brand;
         this.model = model;
-        //this.createdAt = createdAt;
     }
 
     public UUID getUuid() {
@@ -63,14 +54,6 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     @Override

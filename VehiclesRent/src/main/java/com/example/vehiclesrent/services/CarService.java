@@ -22,10 +22,6 @@ public class CarService implements ICrudService<Car> {
 
     @Override
     public List<Car> getAll() {
-
-        /*
-         TODO Aqui tu pode retornar o resultado direto em vez de criar uma variavel.
-         */
         return carRepository.findAll();
     }
 

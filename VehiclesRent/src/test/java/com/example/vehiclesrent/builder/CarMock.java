@@ -24,7 +24,7 @@ public class CarMock {
     public static Car getSavedCarWithRandomIdAndCreatedDate() {
         var car = getCarBuilderWithNameAndBrand();
         car.setUuid(UUID.randomUUID());
-        car.setCreatedAt(LocalDateTime.now());
+        //car.setCreatedAt(LocalDateTime.now());
         return car;
     }
 }

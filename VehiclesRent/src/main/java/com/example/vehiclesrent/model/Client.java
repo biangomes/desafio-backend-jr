@@ -44,15 +44,12 @@ public class Client {
        Também tem getters/setters que não estão sendo utilizados. Recomendo criá-los sob demanda e apenas se for necessário.
        É importante para não quebrar o encapsulamento expondo atributos que não deveriam expostos sem que haja uma necessidade.
     */
-    public Client(UUID uuid, String name, String cpf, Car cars, LocalDate birth, LocalDateTime created_at,
-            LocalDateTime updated_at) {
+    public Client(UUID uuid, String name, String cpf, Car cars, LocalDate birth) {
         this.uuid = uuid;
         this.name = name;
         this.cpf = cpf;
         this.cars = cars;
         this.birth = birth;
-        this.created_at = LocalDateTime.now();
-        this.updated_at = LocalDateTime.now();
     }
 
     public UUID getUuid() {
@@ -94,22 +91,6 @@ public class Client {
 
     public void setBirth(LocalDate birth) {
         this.birth = birth;
-    }
-
-    public LocalDateTime getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
-    }
-
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
     }
 
     @Override
