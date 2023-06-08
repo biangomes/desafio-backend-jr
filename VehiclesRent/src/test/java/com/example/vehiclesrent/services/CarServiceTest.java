@@ -31,9 +31,6 @@ public class CarServiceTest {
     @InjectMocks
     private CarService carService;
 
-    // O ideal é não utilizar essa lista, ela pode inclusive ser removida.
-    //private final List<Car> cars = new ArrayList<>();
-
 
     @DisplayName("Must return a saved car")
     @Test
@@ -101,11 +98,7 @@ public class CarServiceTest {
 
         when(carRepository.findById(uuid)).thenReturn(Optional.of(carInDatabase));
 
-        // Aqui tu pode salvar o carro pelo carRepository porque não é o que está sendo testado
-        // e ele precisa estar no banco de dados para ser deletado,
-        // mas deve deletar ele pelo carService porque é ele que está sendo testado.
-        //carRepository.save(car1);
-        //carRepository.delete(car1.getUuid());
+        carRepository.save(carInDatabase);
 
         // Act
         carService.delete(uuid);
